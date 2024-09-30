@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+        internal class Wall: LevelElement //Färgen på muren ska hårdkodas och tecknet för en vägg (en grå hashtag)
+        {
 
-namespace Labb2.Elements
-{
-    internal class Wall
-    {
-    }
-}
+        }
+

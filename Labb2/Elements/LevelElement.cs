@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Labb2.Elements
+﻿abstract class LevelElement //abstrakt basklass
 {
-    internal class LevelElement
+    private int _x {  get; set; }
+    private int _y { get; set; }
+    private char _char {  get; set; }  // property char
+
+
+    private ConsoleColor ForegorundColor { get; set; }  // property för console.color
+
+
+
+    public Draw () //inga parametrar
     {
+        //anropas för att skriva ut LevelElement på rätt färg och tecken på rätt plats
     }
 }
+
