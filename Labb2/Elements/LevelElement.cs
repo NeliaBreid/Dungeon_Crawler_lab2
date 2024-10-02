@@ -1,25 +1,23 @@
-﻿abstract class LevelElement //abstrakt basklass
+﻿using Labb2;
+using System.Security.Principal;
+
+abstract class LevelElement //abstrakt basklass
 {
-    public int X { get; set; } //måste vara public för att kunna nå den utifrån
-    public int Y { get; set; }
+    public StructPosition Position { get; set; }
     protected char Icon { get; set; }
 
-    protected ConsoleColor ForegorundColor { get; set; }
+    protected ConsoleColor ForegroundColor { get; set; }
 
-    public LevelElement(int x, int y, char icon, ConsoleColor consoleColor)
+    public LevelElement(StructPosition Position)
     {
-        X = x;
-        Y = y;
-        Icon = icon;
-        ForegorundColor = consoleColor;
-
+        this.Position = Position;
     }
 
 
     public void Draw() //inga parametrar
     {
-        Console.SetCursorPosition(X, Y);
-        Console.ForegroundColor = ForegorundColor;
+        Console.SetCursorPosition(Position.X, Position.Y);
+        Console.ForegroundColor = ForegroundColor;
         Console.WriteLine(Icon);
         Console.ResetColor();
 

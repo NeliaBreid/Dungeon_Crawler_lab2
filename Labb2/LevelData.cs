@@ -1,4 +1,5 @@
 ﻿
+using Labb2;
 using System.Security.Cryptography.X509Certificates;
 
 internal class LevelData
@@ -11,15 +12,6 @@ internal class LevelData
     }
     public void Load(string fileName) //Metod som ska läsa in filen
     {
-        //if (File.Exists(fileName))
-        //{
-        //    Console.WriteLine("File found");
-        //}
-        //else
-        //{
-        //    Console.WriteLine("File not found");
-
-        //}
         using (StreamReader fileReader = new StreamReader(fileName)) 
         {
 
@@ -37,17 +29,17 @@ internal class LevelData
                     {
                         if (c == 'r')
                         {
-                            _elements.Add(new Rat(x, y));
+                            _elements.Add(new Rat(new StructPosition(x, y)));
                         }
 
                         else if (c == '#')
                         {
-                            _elements.Add(new Wall(x, y));
+                            _elements.Add(new Wall(new StructPosition(x, y)));
                         }
 
                         else if (c == 's')
                         {
-                            _elements.Add(new Snake(x, y));
+                            _elements.Add(new Snake(new StructPosition(x, y)));
                         }
                         x++;
 

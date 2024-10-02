@@ -4,9 +4,8 @@ using System.Reflection.Metadata;
 
 abstract class Enemy: LevelElement //ärver av basklassen och är abstract, både för orm och råtta
 {
-    protected Enemy (int x, int y, char icon, ConsoleColor consoleColor) : base(x, y, icon, consoleColor)
+    protected Enemy (StructPosition Position) : base(Position)
     {
-        
     }
 
     public string Name { get; set; } 

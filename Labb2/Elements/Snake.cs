@@ -1,13 +1,14 @@
-﻿internal class Snake: Enemy //ärver av enemy
+﻿using Labb2;
+
+internal class Snake: Enemy //ärver av enemy
     {
-    public Snake() : base(6, 2, 's', ConsoleColor.Green)
-    {
-        
-    }
-    public Snake(int x, int y) : base(x, y, 's',ConsoleColor.Green)
+
+    public Snake(StructPosition Position) : base(Position)
     {
         Health = 25;
         Name = "Snake";
+        Icon = 's';
+        ForegroundColor = ConsoleColor.Green;
     }
     public override void Update() //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för orm)
     {
