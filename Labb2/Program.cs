@@ -1,17 +1,12 @@
 ﻿
 LevelData level = new LevelData();
 string file = $"Levels\\Level1.txt";
-level.Load(file);
+level.Load(file); //metod för att läsa in filen
 
 int totalElements = level.Elements.Count; // 304 element i listan
-Console.WriteLine(totalElements);
+//Console.WriteLine(totalElements);
 
 
-
-//foreach (LevelElement element in level.Elements)
-//{
-//    element.Draw();
-//}
 
 //Rat rat = new Rat(3,4);
 //Snake snake = new Snake(5,6);
@@ -20,13 +15,5 @@ Console.WriteLine(totalElements);
 //snake.Draw();
 //wall.Draw();
 
-// sparar en textfil i mitt system
-//string textfile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Levels", "Level1.txt");
 
-
-
-//if (File.Exists(textfile)) //om filen finns, läser in filen.
-//{
-//    Console.WriteLine(File.ReadAllText(textfile)); // Läs in, skriv ut
-//}
 
