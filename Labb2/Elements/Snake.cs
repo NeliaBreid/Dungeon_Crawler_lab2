@@ -1,5 +1,9 @@
 ﻿internal class Snake: Enemy //ärver av enemy
     {
+    public Snake() : base(6, 2, 's', ConsoleColor.Green)
+    {
+        
+    }
     public Snake(int x, int y) : base(x, y, 's',ConsoleColor.Green)
     {
         Health = 25;

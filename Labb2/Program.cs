@@ -1,11 +1,17 @@
 ﻿
 LevelData level = new LevelData();
-level.Load("level1.txt");
+string file = $"Levels\\Level1.txt";
+level.Load(file);
 
-foreach (LevelElement element in level.Elements)
-{
-    element.Draw();
-}
+int totalElements = level.Elements.Count; // 304 element i listan
+Console.WriteLine(totalElements);
+
+
+
+//foreach (LevelElement element in level.Elements)
+//{
+//    element.Draw();
+//}
 
 //Rat rat = new Rat(3,4);
 //Snake snake = new Snake(5,6);
