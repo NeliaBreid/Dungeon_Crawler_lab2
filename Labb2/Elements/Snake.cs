@@ -10,9 +10,36 @@ internal class Snake: Enemy //ärver av enemy
         Icon = 's';
         ForegroundColor = ConsoleColor.Green;
     }
-    public override void Update() //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för orm)
+    public override void Update(StructPosition position) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för orm)
     {
-        throw new NotImplementedException();
+        Random random = new Random();
+
+        int direction = random.Next(4);
+
+        switch (direction)
+        {
+            case 0:
+                position.X -= 1;
+                break;
+            case 1:
+                position.X += 1;
+                break;
+            case 2:
+                position.Y -= 1;
+                break;
+            case 3:
+                position.Y += 1;
+                break;
+
+        }
+
+        Console.SetCursorPosition(Position.X, Position.Y);
+        Console.Write(' ');
+
+        Position = new StructPosition(position);
+
+        Draw();
+
     }
 }
 

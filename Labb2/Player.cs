@@ -1,6 +1,8 @@
 ﻿
 using Labb2;
 using System.Drawing;
+using System.Reflection.Emit;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Player : LevelElement
 {
@@ -12,37 +14,41 @@ internal class Player : LevelElement
 
     public void MovePlayer()
     {
-
-        while (true)
-        {
+        
+        
             var positionX = Position.X;
             var positionY = Position.Y;
+
+            Console.CursorVisible = false;
+
             ConsoleKey key = Console.ReadKey().Key;
-            switch (key) 
-            {
-                case ConsoleKey.UpArrow:
-                    positionY -= 1; 
-                    break;
-                case ConsoleKey.DownArrow:
-                    positionY += 1;
-                    break;
-                case ConsoleKey.LeftArrow:
-                    positionX -= 1;
-                    break;
-                case ConsoleKey.RightArrow:
-                    positionX += 1;
-                    break;
+
+        switch (key)
+        {
+            case ConsoleKey.UpArrow:
+                positionY -= 1;
+                break;
+            case ConsoleKey.DownArrow:
+                positionY += 1;
+                break;
+            case ConsoleKey.LeftArrow:
+                positionX -= 1;
+                break;
+            case ConsoleKey.RightArrow:
+                positionX += 1;
+                break;
                 case ConsoleKey.Escape:
                     Environment.Exit(0);
                     return; 
-            }
+        }
 
+   
             Console.SetCursorPosition(Position.X, Position.Y);
             Console.Write(' ');
 
             Position = new StructPosition(positionX, positionY);
             Draw();
-        }
+        
     }
 }
 

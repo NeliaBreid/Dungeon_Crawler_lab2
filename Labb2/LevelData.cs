@@ -10,6 +10,15 @@ internal class LevelData
     {
         get { return _elements; }
     }
+
+
+    private List<LevelElement> _enemies = new List<LevelElement>();
+
+    public List<LevelElement> Enemies
+    {
+        get { return _enemies; }
+    }
+
     public void Load(string fileName) //Metod som ska läsa in filen
     {
         using (StreamReader fileReader = new StreamReader(fileName)) 
@@ -30,6 +39,7 @@ internal class LevelData
                         if (c == 'r')
                         {
                             _elements.Add(new Rat(new StructPosition(x, y)));
+                            _enemies.Add(new Rat(new StructPosition(x, y)));
                         }
 
                         else if (c == '#')
@@ -40,6 +50,7 @@ internal class LevelData
                         else if (c == 's')
                         {
                             _elements.Add(new Snake(new StructPosition(x, y)));
+                            _enemies.Add(new Snake(new StructPosition(x, y)));
                         }
                         x++;
 

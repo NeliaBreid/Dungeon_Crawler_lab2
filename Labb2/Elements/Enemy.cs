@@ -14,14 +14,7 @@ abstract class Enemy: LevelElement //ärver av basklassen och är abstract, båd
     public Dice DefenceDice { get; set; }
 
 
-    //lägger till en funktion som är specifik för fienden
-    // property för namnet snake
-    //property för namnet rat
-    // property för hälsa
-    // property av AttackDice (av typen Dice)
-    // property av DefenceDice (av typen Dice)
-
-    public abstract void Update();
+    public abstract void Update(StructPosition position);
     
         //kunna ärvas och anropar på alla fiender och sedan sköter de olika subklasserna hur de uppdateras
         // ex. förflyttningsmönster
