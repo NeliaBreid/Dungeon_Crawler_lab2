@@ -12,16 +12,14 @@ internal class Player : LevelElement
         ForegroundColor = ConsoleColor.White;
     }
 
-    public void MovePlayer()
+    public void MovePlayer(LevelData levelData)
     {
-        
-        
-            var positionX = Position.X;
-            var positionY = Position.Y;
+        Console.CursorVisible = false;
 
-            Console.CursorVisible = false;
+        ConsoleKey key = Console.ReadKey().Key;
 
-            ConsoleKey key = Console.ReadKey().Key;
+        var positionX = Position.X;
+        var positionY = Position.Y;
 
         switch (key)
         {
@@ -46,11 +44,43 @@ internal class Player : LevelElement
             Console.SetCursorPosition(Position.X, Position.Y);
             Console.Write(' ');
 
-            Position = new StructPosition(positionX, positionY);
-            
+          
+
+        var potensiellPosition = new StructPosition(positionX, positionY);
+
+        var element = isElement(potensiellPosition, levelData.Elements);
+
+        if (element != null )
+        {
+            if(element is Wall )
+            {
+
+            }
+        }
+        else
+        {
+            Position = new StructPosition(positionX, positionY); //sätter till en ny position
+        }
+
         Draw();
         
     }
+    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant
+    {
+
+        foreach (LevelElement element in levelElements)
+        {
+
+            if (element.Position.Equals(position))
+            {
+
+                return element;
+
+            }
+        }
+        return null;
+    }
+
 }
 
 
@@ -75,44 +105,44 @@ internal class Player : LevelElement
 
 
 
-            // -----------chatgtplösning---------
-            ////måste ha tillgång till @ som ligger i en lista i klassen Leveldata
-            ////måste ha startposition för @
-            //int x = 4;
-            //int y = 3;
+// -----------chatgtplösning---------
+////måste ha tillgång till @ som ligger i en lista i klassen Leveldata
+////måste ha startposition för @
+//int x = 4;
+//int y = 3;
 
 
-            ////
+////
 
-            //ConsoleKeyInfo keyInfo = Console.ReadKey(true); //läser tangenten
+//ConsoleKeyInfo keyInfo = Console.ReadKey(true); //läser tangenten
 
-            //while (true)
-            //{
-            //    Console.SetCursorPosition(x, y);
-            //    Console.Write("@");
+//while (true)
+//{
+//    Console.SetCursorPosition(x, y);
+//    Console.Write("@");
 
-            //   // Console.CursorVisible = false;
+//   // Console.CursorVisible = false;
 
-            //    switch (keyInfo.Key)
-            //    {
-            //        case ConsoleKey.UpArrow:
-            //          //  y = Math.Max(0, y - 1); // Flytta upp (minska y) om möjligt
-            //            break;
-            //        case ConsoleKey.DownArrow:
-            //           // y = Math.Min(Console.WindowHeight - 1, y + 1); // Flytta ned (öka y)
-            //            break;
-            //        case ConsoleKey.LeftArrow:
-            //           // x = Math.Max(0, x - 1); // Flytta vänster (minska x)
-            //            break;
-            //        case ConsoleKey.RightArrow:
-            //          //  x = Math.Min(Console.WindowWidth - 1, x + 1); // Flytta höger (öka x)
-            //            break;
-            //        case ConsoleKey.Escape:
-            //            return; // Avsluta spelet om Escape trycks
-            //    }
+//    switch (keyInfo.Key)
+//    {
+//        case ConsoleKey.UpArrow:
+//          //  y = Math.Max(0, y - 1); // Flytta upp (minska y) om möjligt
+//            break;
+//        case ConsoleKey.DownArrow:
+//           // y = Math.Min(Console.WindowHeight - 1, y + 1); // Flytta ned (öka y)
+//            break;
+//        case ConsoleKey.LeftArrow:
+//           // x = Math.Max(0, x - 1); // Flytta vänster (minska x)
+//            break;
+//        case ConsoleKey.RightArrow:
+//          //  x = Math.Min(Console.WindowWidth - 1, x + 1); // Flytta höger (öka x)
+//            break;
+//        case ConsoleKey.Escape:
+//            return; // Avsluta spelet om Escape trycks
+//    }
 
-        
-    
+
+
 
 
 

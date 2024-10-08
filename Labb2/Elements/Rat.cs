@@ -14,7 +14,7 @@ internal class Rat : Enemy //ärver av enemy
         ForegroundColor = ConsoleColor.Red;
     }
 
-    public override void Update(StructPosition position) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för råtta)
+    public override void Update(StructPosition position, LevelData levelData) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för råtta)
     {
         Random random = new Random();
 
@@ -40,10 +40,31 @@ internal class Rat : Enemy //ärver av enemy
         Console.SetCursorPosition(Position.X, Position.Y);
         Console.Write(' ');
 
-        Position = new StructPosition(position);
+        var potensiellPositionSnake = new StructPosition(position.X, position.Y);
+
+        var element = isElement(potensiellPositionSnake, levelData.Elements);
+        if (element == null)
+        {
+            Position = new StructPosition(potensiellPositionSnake.X, potensiellPositionSnake.Y);
+        }
 
         Draw();
         
+    }
+    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant
+    {
+
+        foreach (LevelElement element in levelElements)
+        {
+
+            if (element.Position.Equals(position))
+            {
+
+                return element;
+
+            }
+        }
+        return null;
     }
 }
 

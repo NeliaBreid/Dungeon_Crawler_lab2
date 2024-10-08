@@ -14,10 +14,10 @@ abstract class Enemy: LevelElement //ärver av basklassen och är abstract, båd
     public Dice DefenceDice { get; set; }
 
 
-    public abstract void Update(StructPosition position);
-    
-        //kunna ärvas och anropar på alla fiender och sedan sköter de olika subklasserna hur de uppdateras
-        // ex. förflyttningsmönster
-    
-    }
+    public abstract void Update(StructPosition position, LevelData levelData);
+
+    //kunna ärvas och anropar på alla fiender och sedan sköter de olika subklasserna hur de uppdateras
+    // ex. förflyttningsmönster
+
+}
 

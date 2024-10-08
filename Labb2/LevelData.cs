@@ -12,23 +12,26 @@ internal class LevelData
         get { return _elements; }
     }
 
-
-    public void Load(string fileName) //Metod som ska läsa in filen
+    //Metod som läser in filen
+    public Player Load(string fileName) 
     {
+        Player player = null;
+
         using (StreamReader fileReader = new StreamReader(fileName))
         {
 
             int y = 0;
 
             string line;
+
             while ((line = fileReader.ReadLine()) != null)
             {
 
-                for (int x = 0; x < line.Length; x++) // x- koordinaten
+                for (int x = 0; x < line.Length; x++) 
                 {
 
 
-                    foreach (char c in line) // y koordinaten
+                    foreach (char c in line) 
                     {
                         if (c == 'r')
                         {
@@ -44,6 +47,12 @@ internal class LevelData
                         {
                             _elements.Add(new Snake(new StructPosition(x, y)));
                         }
+                        else if (c == '@')
+                        {
+                            player = new Player(new StructPosition(x, y));
+                           
+                            _elements.Add(player);
+                        }
                         x++;
 
                     }
@@ -56,15 +65,17 @@ internal class LevelData
 
         }
         Print();
+        return player;
     }
     public void Print()
     {
+        Console.Clear();
         foreach (LevelElement element in Elements)
         {
             element.Draw();
         }
     }
-    public LevelElement GetLevelElementAt(StructPosition position) // hämta postitionen på fienden och väggarna
+    public bool isElement(StructPosition position) // hämta postitionen på fienden och väggarna
     {
 
         foreach (LevelElement element in Elements)
@@ -72,11 +83,11 @@ internal class LevelData
             if (element.Position.Equals(position))
             {
 
-                return element;
+                return true;
 
             }
         }
-        return null;
+        return false;
     }
 
 }

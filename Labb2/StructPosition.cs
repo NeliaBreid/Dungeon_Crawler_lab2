@@ -22,33 +22,7 @@ namespace Labb2
         }
 
         // Metod för att beräkna avstånd till origo?
-        public double DistanceToOrigin(StructPosition position)
-        {
-  
-            return Math.Sqrt(X * X + Y * Y);
 
-        }
-
-
-
-        //public void MoveTo(int newX, int newY)
-        //{
-        //    X = newX;
-        //    Y = newY;
-        //}
-
-
-
-        //public bool IsPositionWalkable (int x, int y) //kolla vad gränserna för labyrinten är
-        //{
-        //{
-
-        //    if (X< 0 || Y < 0 || x >= //antalet kolumner || Y >= antalet rader)
-        // return false;
-
-        //}
-        //    ReturnTypeEncoder grid[y,x] == " " || Grid[y,x] == "X"; 
-        //}
 
 
     }
