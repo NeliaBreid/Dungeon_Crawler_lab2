@@ -47,7 +47,8 @@ internal class Player : LevelElement
             Console.Write(' ');
 
             Position = new StructPosition(positionX, positionY);
-            Draw();
+            
+        Draw();
         
     }
 }

@@ -19,7 +19,7 @@ do //för varje varv instanseras ett nytt objekt av gameloop(var)
 
     var gameLoop = new GameLoop();
     player.MovePlayer(); //spelaren rör på sig
-    foreach (Enemy enemy in level.Enemies) //uppdaterar fienden
+    foreach (Enemy enemy in level.Enemies) //uppdaterar fienden, kan göra till en metod och lägga någonstans
          {
         
             enemy.Update(enemy.Position);

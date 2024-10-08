@@ -1,6 +1,7 @@
 ﻿
 using Labb2;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 internal class LevelData
 {
@@ -12,19 +13,12 @@ internal class LevelData
     }
 
 
-    private List<LevelElement> _enemies = new List<LevelElement>();
-
-    public List<LevelElement> Enemies
-    {
-        get { return _enemies; }
-    }
-
     public void Load(string fileName) //Metod som ska läsa in filen
     {
-        using (StreamReader fileReader = new StreamReader(fileName)) 
+        using (StreamReader fileReader = new StreamReader(fileName))
         {
 
-           int y = 0;
+            int y = 0;
 
             string line;
             while ((line = fileReader.ReadLine()) != null)
@@ -39,7 +33,6 @@ internal class LevelData
                         if (c == 'r')
                         {
                             _elements.Add(new Rat(new StructPosition(x, y)));
-                            _enemies.Add(new Rat(new StructPosition(x, y)));
                         }
 
                         else if (c == '#')
@@ -50,7 +43,6 @@ internal class LevelData
                         else if (c == 's')
                         {
                             _elements.Add(new Snake(new StructPosition(x, y)));
-                            _enemies.Add(new Snake(new StructPosition(x, y)));
                         }
                         x++;
 
@@ -61,7 +53,7 @@ internal class LevelData
 
 
             }
-           
+
         }
         Print();
     }
@@ -72,9 +64,24 @@ internal class LevelData
             element.Draw();
         }
     }
+    public LevelElement GetLevelElementAt(StructPosition position) // hämta postitionen på fienden och väggarna
+    {
+
+        foreach (LevelElement element in Elements)
+        {
+            if (element.Position.Equals(position))
+            {
+
+                return element;
+
+            }
+        }
+        return null;
+    }
+
 }
 
-    
 
+//Att göra lista: Hämta positionen på fienden och väggar
 
 
