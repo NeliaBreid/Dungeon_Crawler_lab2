@@ -72,10 +72,10 @@ internal class LevelData
         Console.Clear();
         foreach (LevelElement element in Elements)
         {
-            element.Draw();
+            //element.Draw();
         }
     }
-    public bool isElement(StructPosition position) // hämta postitionen på fienden och väggarna
+    public bool isElement(StructPosition position) 
     {
 
         foreach (LevelElement element in Elements)
@@ -89,10 +89,32 @@ internal class LevelData
         }
         return false;
     }
+    public void RenderVisibleElements(StructPosition playerPosition, List<LevelElement> elements)
+
+    {
+        int visionRange = 5; 
+
+        foreach (var element in elements)
+        {
+            
+            double distance = playerPosition.DistanceTo(element.Position);
+
+            if (distance <= visionRange)
+            {
+
+                if (element is Wall)
+                {
+                    element.Draw();
+                }
+                else if (element is Enemy)
+                {
+                    element.Draw();
+                }
+            }
+
+        }
+    }
 
 }
-
-
-//Att göra lista: Hämta positionen på fienden och väggar
 
 

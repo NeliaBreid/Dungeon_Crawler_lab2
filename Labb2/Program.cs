@@ -12,7 +12,5 @@ gameLoop.RunLoop();
 
 
 
-
-
 Console.SetCursorPosition(1, Console.WindowHeight - 10);
 

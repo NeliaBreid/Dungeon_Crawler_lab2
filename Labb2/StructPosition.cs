@@ -11,19 +11,22 @@ namespace Labb2
     {
         public int X;
         public int Y;
-        public StructPosition(StructPosition position) : this(position.X, position.Y) //konstruktor
+        public StructPosition(StructPosition position) : this(position.X, position.Y) 
         {
 
         }
-        public StructPosition(int x, int y) //konstruktor för att initera x och y
+        public StructPosition(int x, int y) 
         {
             X = x;
             Y = y;
         }
+        public int DistanceTo(StructPosition position) // Det här är en beräkning som räknar ut avståndet 
+        {
+            int dx = position.X - X;
+            int dy = position.Y - Y;
 
-        // Metod för att beräkna avstånd till origo?
-
-
+            return (int)Math.Sqrt(dx * dx + dy * dy); //pytagoras sats
+        }
 
     }
 }

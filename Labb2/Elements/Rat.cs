@@ -12,6 +12,8 @@ internal class Rat : Enemy //ärver av enemy
         Name = "Rat";
         Icon = 'r';
         ForegroundColor = ConsoleColor.Red;
+        AttackDice = new Dice(1, 6, 3);
+        DefenceDice = new Dice(1, 6, 1);
     }
 
     public override void Update(StructPosition position, LevelData levelData) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för råtta)
@@ -48,7 +50,7 @@ internal class Rat : Enemy //ärver av enemy
             Position = new StructPosition(potensiellPositionSnake.X, potensiellPositionSnake.Y);
         }
 
-        Draw();
+        
         
     }
     public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant

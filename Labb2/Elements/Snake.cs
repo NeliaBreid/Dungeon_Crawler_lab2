@@ -9,6 +9,8 @@ internal class Snake: Enemy //ärver av enemy
         Name = "Snake";
         Icon = 's';
         ForegroundColor = ConsoleColor.Green;
+        AttackDice = new Dice(3, 4, 2);
+        DefenceDice = new Dice(1, 8, 5);
     }
     public override void Update(StructPosition position, LevelData levelData) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för orm)
     {
@@ -45,7 +47,7 @@ internal class Snake: Enemy //ärver av enemy
         }
 
 
-        Draw();
+        
 
     }
     public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant

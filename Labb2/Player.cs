@@ -2,14 +2,25 @@
 using Labb2;
 using System.Drawing;
 using System.Reflection.Emit;
+using System.Security.Cryptography.X509Certificates;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Player : LevelElement
 {
+    public string Name { get; set; }
+    public int HealthPoints { get; set; }
+    public Dice AttackDice { get; set; }
+    public Dice DefenceDice { get; set; }
+
     public Player(StructPosition Position) : base(Position)
     {
         Icon = '@';
         ForegroundColor = ConsoleColor.White;
+        Name = "player";
+        HealthPoints = 25;
+        AttackDice = new Dice(2, 6, 2);
+        DefenceDice = new Dice(2, 6, 0);
+
     }
 
     public void MovePlayer(LevelData levelData)
@@ -82,67 +93,3 @@ internal class Player : LevelElement
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// -----------chatgtplösning---------
-////måste ha tillgång till @ som ligger i en lista i klassen Leveldata
-////måste ha startposition för @
-//int x = 4;
-//int y = 3;
-
-
-////
-
-//ConsoleKeyInfo keyInfo = Console.ReadKey(true); //läser tangenten
-
-//while (true)
-//{
-//    Console.SetCursorPosition(x, y);
-//    Console.Write("@");
-
-//   // Console.CursorVisible = false;
-
-//    switch (keyInfo.Key)
-//    {
-//        case ConsoleKey.UpArrow:
-//          //  y = Math.Max(0, y - 1); // Flytta upp (minska y) om möjligt
-//            break;
-//        case ConsoleKey.DownArrow:
-//           // y = Math.Min(Console.WindowHeight - 1, y + 1); // Flytta ned (öka y)
-//            break;
-//        case ConsoleKey.LeftArrow:
-//           // x = Math.Max(0, x - 1); // Flytta vänster (minska x)
-//            break;
-//        case ConsoleKey.RightArrow:
-//          //  x = Math.Min(Console.WindowWidth - 1, x + 1); // Flytta höger (öka x)
-//            break;
-//        case ConsoleKey.Escape:
-//            return; // Avsluta spelet om Escape trycks
-//    }
-
-
-
-
-
-
