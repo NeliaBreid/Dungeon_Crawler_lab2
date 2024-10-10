@@ -11,6 +11,7 @@ internal class Rat : Enemy //ärver av enemy
         Health = 10;
         Name = "Rat";
         Icon = 'r';
+        IsVisible = true;
         ForegroundColor = ConsoleColor.Red;
         AttackDice = new Dice(1, 6, 3);
         DefenceDice = new Dice(1, 6, 1);

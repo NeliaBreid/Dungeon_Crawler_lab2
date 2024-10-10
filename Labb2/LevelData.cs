@@ -64,15 +64,36 @@ internal class LevelData
             }
 
         }
-        Print();
+    
         return player;
     }
-    public void Print()
+    public void PrintVisibleElements(StructPosition playerPosition, List<LevelElement> elements)
+
     {
-        Console.Clear();
-        foreach (LevelElement element in Elements)
+        int visionRange = 5; //sätter avståndet range
+
+        foreach (var element in elements)
         {
-            //element.Draw();
+            // Calculate the distance between the player and the current element
+            double distance = playerPosition.DistanceTo(element.Position);
+
+            if (distance <= visionRange)
+            {
+                // Draw the element
+
+                if (element is Wall)
+                {
+                    // If it's a wall that has been seen, keep it drawn
+                    element.Draw();
+                }
+
+                else if (element is Enemy && element.IsVisible)
+                {
+                    element.Draw();
+                }
+
+            }
+
         }
     }
     public bool isElement(StructPosition position) 
@@ -88,31 +109,7 @@ internal class LevelData
             }
         }
         return false;
-    }
-    public void RenderVisibleElements(StructPosition playerPosition, List<LevelElement> elements)
-
-    {
-        int visionRange = 5; 
-
-        foreach (var element in elements)
-        {
-            
-            double distance = playerPosition.DistanceTo(element.Position);
-
-            if (distance <= visionRange)
-            {
-
-                if (element is Wall)
-                {
-                    element.Draw();
-                }
-                else if (element is Enemy)
-                {
-                    element.Draw();
-                }
-            }
-
-        }
+    
     }
 
 }

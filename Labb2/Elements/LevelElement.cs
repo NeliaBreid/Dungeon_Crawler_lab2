@@ -6,6 +6,7 @@ abstract class LevelElement //abstrakt basklass
     public StructPosition Position { get; set; }
     protected char Icon { get; set; }
 
+    public bool IsVisible { get; set; }
     protected ConsoleColor ForegroundColor { get; set; }
 
     public LevelElement(StructPosition Position)

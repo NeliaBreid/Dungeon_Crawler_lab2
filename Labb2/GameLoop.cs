@@ -8,31 +8,39 @@ using System.Security.Cryptography.X509Certificates;
 
 internal class GameLoop
 {
-    
     private LevelData leveldata;
     private Player player;
 
-    public GameLoop(LevelData data, Player player) //det är bara en loop av spelet, konstruerar spelet m. konstruktor
+
+
+    public GameLoop(LevelData data, Player player)
     {
         this.leveldata = data;
         this.player = player;
 
     }
- 
+
     public void RunLoop()
     {
 
+
         while (true)
         {
-            leveldata.RenderVisibleElements(player.Position, leveldata.Elements);
 
-            player.MovePlayer(leveldata); //spelaren rör på sig
+            leveldata.PrintVisibleElements(player.Position, leveldata.Elements);
+
+            player.MovePlayer(leveldata);
 
             UpdateEnemies();
 
+
+            Console.SetCursorPosition(1, 18);
+            Console.WriteLine(player.ToString());
+            Console.SetCursorPosition(1, 18);
+
+
         }
     }
-
 
     private void UpdateEnemies()
     {
@@ -55,8 +63,8 @@ internal class GameLoop
 
 
         }
-
     }
+
 
 }
 

@@ -8,7 +8,7 @@ internal class Snake : Enemy //ärver av enemy
         Health = 25;
         Name = "Snake";
         Icon = 's';
-        //IsVisible = true;
+        IsVisible = true;
         ForegroundColor = ConsoleColor.Green;
         AttackDice = new Dice(3, 4, 2);
         DefenceDice = new Dice(1, 8, 5);
