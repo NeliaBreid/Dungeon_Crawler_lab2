@@ -40,9 +40,19 @@ internal class GameLoop
 
         foreach (Enemy enemy in enemies) //uppdaterar fienden, kan göra till en metod och lägga någonstans
         {
-            enemy.Draw();
-            enemy.Update(enemy.Position, leveldata);
-            
+            if (enemy is Rat)
+            {
+                var rat = (Rat)enemy;
+                rat.Update(enemy.Position, leveldata);
+
+
+            }
+            else if (enemy is Snake)
+            {
+                var snake = (Snake)enemy;
+                snake.Update(player.Position, leveldata);
+            }
+
 
         }
 
