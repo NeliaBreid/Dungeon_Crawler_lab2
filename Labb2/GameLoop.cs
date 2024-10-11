@@ -3,7 +3,7 @@ using System.Reflection;
 using System;
 using System.Runtime.ConstrainedExecution;
 using System.Reflection.Emit;
-using Labb2;
+
 using System.Security.Cryptography.X509Certificates;
 
 internal class GameLoop
@@ -23,30 +23,26 @@ internal class GameLoop
     public void RunLoop()
     {
 
-
         while (true)
         {
 
-            leveldata.PrintVisibleElements(player.Position, leveldata.Elements);
+            leveldata.PrintVisibleSurrondings(player.Position, leveldata.Elements);
 
             player.MovePlayer(leveldata);
 
             UpdateEnemies();
 
-
             Console.SetCursorPosition(1, 18);
             Console.WriteLine(player.ToString());
-            Console.SetCursorPosition(1, 18);
-
 
         }
     }
 
     private void UpdateEnemies()
     {
-        List<Enemy> enemies = leveldata.Elements.OfType<Enemy>().ToList(); //OfType är LINQ
+        List<Enemy> enemies = leveldata.Elements.OfType<Enemy>().ToList(); 
 
-        foreach (Enemy enemy in enemies) //uppdaterar fienden, kan göra till en metod och lägga någonstans
+        foreach (Enemy enemy in enemies) 
         {
             if (enemy is Rat)
             {
@@ -61,10 +57,8 @@ internal class GameLoop
                 snake.Update(player.Position, leveldata);
             }
 
-
         }
     }
-
 
 }
 

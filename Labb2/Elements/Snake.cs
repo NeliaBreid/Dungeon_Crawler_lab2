@@ -1,6 +1,5 @@
-﻿using Labb2;
-
-internal class Snake : Enemy //ärver av enemy
+﻿
+internal class Snake : Enemy 
 {
 
     public Snake(StructPosition Position) : base(Position)
@@ -13,7 +12,7 @@ internal class Snake : Enemy //ärver av enemy
         AttackDice = new Dice(3, 4, 2);
         DefenceDice = new Dice(1, 8, 5);
     }
-    public override void Update(StructPosition position, LevelData levelData) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för orm)
+    public override void Update(StructPosition position, LevelData levelData) 
     {
         StructPosition newPosition = new StructPosition(Position.X, Position.Y);
 
@@ -34,9 +33,8 @@ internal class Snake : Enemy //ärver av enemy
         }
 
     }
-    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant
+    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)
     {
-
         foreach (LevelElement element in levelElements)
         {
 

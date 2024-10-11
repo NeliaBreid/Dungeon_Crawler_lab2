@@ -1,8 +1,7 @@
 ﻿
-using Labb2;
 using System.Reflection.Metadata;
 
-abstract class Enemy: LevelElement //ärver av basklassen och är abstract, både för orm och råtta
+abstract class Enemy: LevelElement 
 {
     protected Enemy (StructPosition Position) : base(Position)
     {
@@ -16,8 +15,7 @@ abstract class Enemy: LevelElement //ärver av basklassen och är abstract, båd
 
     public abstract void Update(StructPosition position, LevelData levelData);
 
-    //kunna ärvas och anropar på alla fiender och sedan sköter de olika subklasserna hur de uppdateras
-    // ex. förflyttningsmönster
+   
 
 }
 

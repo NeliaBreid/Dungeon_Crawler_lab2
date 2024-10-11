@@ -1,6 +1,4 @@
 ﻿
-using Labb2;
-using System.Drawing;
 
 LevelData level = new LevelData();
 string file = $"Levels\\Level1.txt";

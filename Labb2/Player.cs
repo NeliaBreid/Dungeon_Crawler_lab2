@@ -1,14 +1,9 @@
 ﻿
-using Labb2;
-using System.Drawing;
-using System.Reflection.Emit;
-using System.Security.Cryptography.X509Certificates;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 internal class Player : LevelElement
 {
-    public static int Turn { get; set; }
     public int Health { get; set; }
+    public static int Turn {  get; set; }
     public string Name { get; set; }
     public Dice AttackDice { get; set; }
     public Dice DefenceDice { get; set; }
@@ -17,7 +12,7 @@ internal class Player : LevelElement
     {
         Icon = '@';
         ForegroundColor = ConsoleColor.White;
-        Health = 25; //ändra till 100
+        Health = 100;
         Name = "Player";
         IsVisible = true;
         AttackDice = new Dice(2, 6, 2);
@@ -40,7 +35,7 @@ internal class Player : LevelElement
         switch (key)
         {
             case ConsoleKey.UpArrow:
-                posY -= 1;//kan oxå skriva nexY--
+                posY -= 1;
                 break;
             case ConsoleKey.DownArrow:
                 posY += 1;
@@ -70,42 +65,37 @@ internal class Player : LevelElement
 
         if (element != null)
         {
-            if (element is Wall)
-            {
-                //
-            }
-            else if (element is Rat rat && IsVisible)
+            
+            if (element is Rat rat && IsVisible)
             {
 
-                //Console.WriteLine("rat!");
                 PlayerAttacksEnemy(this, rat);
                 EnemyattacksPlayer(rat, this);
-                //Anropa en metod för attack 
-
 
             }
             else if (element is Snake snake && IsVisible)
             {
-                //Console.WriteLine("Snake!");
+
                 PlayerAttacksEnemy(this, snake);
                 EnemyattacksPlayer(snake, this);
-                //Anropa en metod för attack 
 
             }
         }
 
-        else
+        else 
         {
-            Position = new StructPosition(posX, posY); //sätter till en ny position
+            Position = new StructPosition(posX, posY); 
+            
         }
 
         if (IsVisible)
         {
             Draw();
+            
         }
 
     }
-    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant
+    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)
     {
 
         foreach (LevelElement element in levelElements)
@@ -120,9 +110,14 @@ internal class Player : LevelElement
         }
         return null;
     }
-    public static void PlayerAttacksEnemy(Player player, Enemy enemy) //den som attackerar och den som skyddar
+    public override string ToString()
     {
-        int attackPoints = player.AttackDice.Throw(); //spelaren attackerar
+        string playerString = $"{Name} has {Health} HP left. Turn: {Turn}.";
+        return playerString;
+    }
+    public static void PlayerAttacksEnemy(Player player, Enemy enemy) 
+    {
+        int attackPoints = player.AttackDice.Throw();
         int defensePoints = enemy.DefenceDice.Throw();
         int damage = attackPoints - defensePoints;
 
@@ -132,6 +127,7 @@ internal class Player : LevelElement
             Console.SetCursorPosition(1, 20);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 20);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{player.Name} attacks {enemy.Name} causing {damage} damage! {enemy.Name} has {enemy.Health} HP left.");
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
         }
@@ -140,16 +136,18 @@ internal class Player : LevelElement
             Console.SetCursorPosition(1, 20);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 20);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{player.Name} attacks but {enemy.Name} blocks the attack!");
             Console.SetCursorPosition(player.Position.X, player.Position.Y);
         }
 
-        // Step 3: Check if the defender is still alive
+       
         if (enemy.Health <= 0)
         {
             Console.SetCursorPosition(1, 20);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 20);
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"{enemy.Name} is defeated!");
             enemy.IsVisible = false;
             return;
@@ -162,7 +160,7 @@ internal class Player : LevelElement
         }
 
     }
-    public void EnemyattacksPlayer(Enemy enemy, Player player) //den som attackerar och den som skyddar
+    public void EnemyattacksPlayer(Enemy enemy, Player player) 
     {
 
         int attackPoints = enemy.AttackDice.Throw();
@@ -175,9 +173,10 @@ internal class Player : LevelElement
             Console.SetCursorPosition(1, 21);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 21);
-            player.Health -= damage; // player.Health får inte vara under 0
+            player.Health -= damage;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{enemy.Name} attacks {player.Name} causing {damage} damage! {player.Name} has {player.Health} HP left.");
-
+           
         }
         else
         {
@@ -185,6 +184,7 @@ internal class Player : LevelElement
             Console.SetCursorPosition(1, 21);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 21);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{enemy.Name} attacks but {player.Name} blocks the attack!");
         }
 
@@ -194,6 +194,7 @@ internal class Player : LevelElement
             Console.SetCursorPosition(1, 21);
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(1, 21);
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{enemy.Name} is defeated!");
 
         }
@@ -202,10 +203,5 @@ internal class Player : LevelElement
             Console.WriteLine("GAME OVER!");
             Environment.Exit(0);
         }
-    }
-    public override string ToString()
-    {
-        string playerString = $"{Name} has {Health} HP left. Turn: {Turn}";
-        return playerString;
     }
 }

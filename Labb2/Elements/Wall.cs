@@ -1,5 +1,5 @@
 ﻿
-using Labb2;
+
 
 internal class Wall: LevelElement 
 {

@@ -1,10 +1,9 @@
 ﻿
-using Labb2;
 using System;
 using System.Drawing;
 using System.Net.Http.Headers;
 
-internal class Rat : Enemy //ärver av enemy
+internal class Rat : Enemy 
 {
     public Rat(StructPosition Position) : base(Position)
     {
@@ -17,7 +16,7 @@ internal class Rat : Enemy //ärver av enemy
         DefenceDice = new Dice(1, 6, 1);
     }
 
-    public override void Update(StructPosition position, LevelData levelData) //rörelsemönstret/ allt som fienden ska göra för varje drag (här specifikt för råtta)
+    public override void Update(StructPosition position, LevelData levelData) 
     {
         Random random = new Random();
 
@@ -43,18 +42,17 @@ internal class Rat : Enemy //ärver av enemy
         Console.SetCursorPosition(Position.X, Position.Y);
         Console.Write(' ');
 
-        var potensiellPositionSnake = new StructPosition(position.X, position.Y);
+        var newSnakePosition = new StructPosition(position.X, position.Y);
 
-        var element = isElement(potensiellPositionSnake, levelData.Elements);
+        var element = isElement(newSnakePosition, levelData.Elements);
         if (element == null)
         {
-            Position = new StructPosition(potensiellPositionSnake.X, potensiellPositionSnake.Y);
+            Position = new StructPosition(newSnakePosition.X, newSnakePosition.Y);
         }
 
-        
-        
     }
-    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)//StructPosition position) // Om det är en typ så blir det sant
+
+    public LevelElement? isElement(StructPosition position, List<LevelElement> levelElements)
     {
 
         foreach (LevelElement element in levelElements)

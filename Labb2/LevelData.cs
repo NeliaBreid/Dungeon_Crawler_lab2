@@ -1,7 +1,5 @@
 ﻿
-using Labb2;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml.Linq;
+
 
 internal class LevelData
 {
@@ -12,7 +10,7 @@ internal class LevelData
         get { return _elements; }
     }
 
-    //Metod som läser in filen
+    
     public Player Load(string fileName) 
     {
         Player player = null;
@@ -29,7 +27,6 @@ internal class LevelData
 
                 for (int x = 0; x < line.Length; x++) 
                 {
-
 
                     foreach (char c in line) 
                     {
@@ -67,23 +64,23 @@ internal class LevelData
     
         return player;
     }
-    public void PrintVisibleElements(StructPosition playerPosition, List<LevelElement> elements)
+    public void PrintVisibleSurrondings(StructPosition playerPosition, List<LevelElement> elements)
 
     {
-        int visionRange = 5; //sätter avståndet range
+        int visionRange = 5; 
 
         foreach (var element in elements)
         {
-            // Calculate the distance between the player and the current element
+            
             double distance = playerPosition.DistanceTo(element.Position);
+
 
             if (distance <= visionRange)
             {
-                // Draw the element
 
                 if (element is Wall)
                 {
-                    // If it's a wall that has been seen, keep it drawn
+                    
                     element.Draw();
                 }
 
@@ -96,6 +93,7 @@ internal class LevelData
 
         }
     }
+
     public bool isElement(StructPosition position) 
     {
 
@@ -109,9 +107,7 @@ internal class LevelData
             }
         }
         return false;
-    
     }
-
 }
 
 
