@@ -59,7 +59,7 @@ Spelet använder sig av simulerade tärningskast för att avgöra hur mycket ska
 
 Skapa en klass “Dice” med en konstruktor som tar 3 parametrar: numberOfDice, sidesPerDice och Modifier. Genom att skapa nya instans av denna kommer man kunna skapa olika uppsättningar av tärningar t.ex “3d6+2”, d.v.s slag med 3 stycken 6-sidiga tärningar, där man tar resultatet och sedan plussar på 2, för att få en total poäng.
 
-$${\color{green}Dice-objekt}$$ ska ha en $${\color{yellow}publik \spaceThrow() \spacemetod}$$	 som returnerar ett heltal med den poäng man får när man slår med tärningarna enligt objektets konfiguration. Varje anrop motsvarar alltså ett nytt kast med tärningarna.
+$${\color{green}Dice-objekt}$$ ska ha en $${\color{yellow}publik \Throw() \metod}$$	 som returnerar ett heltal med den poäng man får när man slår med tärningarna enligt objektets konfiguration. Varje anrop motsvarar alltså ett nytt kast med tärningarna.
 
 Gör även en $${\color{yellow}override\space av \space Dice.ToString()}$$	, så att man när man skriver ut ett Dice-objekt får en sträng som beskriver objektets konfiguration. t.ex: “3d6+2”.
 
@@ -91,27 +91,3 @@ Snake står still om spelaren är mer än 2 rutor bort, annars förflyttar den s
 
 Varken spelare, rats eller snakes kan gå igenom väggar eller varandra.
 
-
-
-## Redovisning
-Uppgiften ska lösas individuellt.
-Checka in din lösning som ett nytt repo på Github.
-Lämna in uppgiften på ithsdistans med en kommentar med github-länken.
-
-
-
-Betygskriterier
-Om man vill och har tid får man gärna utöka spelet med fler fiender, eller lägga till “items” som till exempel guld, vapen, rustningar eller mat/dryck (för mer HP). Det går också bra om man vill göra om, eller lägga till fler banor: till exempel kan man ha en utgång ‘>’ som tar en till nästa nivå, och en ‘<’ som tar en till föregående.
-
-Följande kriterier är dock minimum …
-
-
-### För godkänt:
-- Appen ska vara kompatibel med, och kunna läsa in filen “Level1.txt”, och korrekt hantera de olika elementen enligt beskrivningen i labben.
-- Fiendetyperna rat och snakes ska finnas och ha unika stats. Deras beteenden (rörelsemönster) ska fungera enligt beskrivningen i labben.
-- Appen ska ha abstrakta basklasser “LevelElement” och “Enemy”. Klassen “Wall” ärver direkt av “LevelElement”, och klasserna “Rat” och “Snake” ärver direkt av “Enemy” (indirekt av “LevelElement”).
-- Spelaren ska kunna flytta ett steg per omgång (upp/ner/höger/vänster), men inte genom väggar eller fiender.
-- Spelaren har ett synfält som sträcker sig i en radie 5 steg bort från spelarens position. Fiender som är utanför synfältet syns ej (men uppdateras ändå varje omgång); däremot försvinner inte väggarna när man väl upptäckt dem 
-första gången.
-- Går spelaren på en fiende ska attack, defence, och skada avgöras med hjälp av tärningsslag; varpå fienden direkt gör en motattack (om den överlever).
-- Går en fiende in i spelaren görs samma sekvens som i föregående punkt, men fienden attackerar först; varpå spelaren gör en motattack (om den överlever).
