@@ -1,12 +1,6 @@
 
 # Labb 2 - Dungeon Crawler
 
-$${\color{yellow}metoder}
-{\color{green}objekt}
-{\color{Blue}Data}
-{\color{lightgreen}Elements/klasser}$$	
-
-
 
 En dungeon crawler är en typ av rollspel som involverar att spelare utforskar labyrintiska områden, så kallade dungeons, där de slåss mot fiender och letar efter skatter. I denna labb bygger vi en, något förenklad, version av ett sådant spel i form av en konsolapplikation.
 
